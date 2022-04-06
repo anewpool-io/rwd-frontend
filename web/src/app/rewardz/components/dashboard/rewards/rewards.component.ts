@@ -21,7 +21,7 @@ import { Wallet } from "../../../../common/data/wallet";
 export class RewardsComponent extends NotificationComponent implements OnInit {
     public walletSubscription: Subscription;
     public tokens: Array<Token> = [];
-    public submitURL: string = "/contracts/22/mp/claim";
+    public submitURL: string = "/rwd/multisig/6/sporwc";
     public tokenCols: any[] = [];
     @ViewChild('fileUpload', {static: false}) public fileUpload: any;
 
@@ -70,7 +70,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
          console.log("claimSelectedTokens");
         globalThis.wallet.script = new Script(null);
         const rwd = new SpoRewardClaim(null);
-        for (let i = 0; i < this.tokens.length; ++i) {
+        for (let i = 0; i < this.tokens.length-1; ++i) {
             rwd.reward_tokens.push(this.tokens[i]);
         }
         globalThis.wallet.script.SpoRewardClaim = rwd;
